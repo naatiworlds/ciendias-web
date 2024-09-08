@@ -1,0 +1,19 @@
+[build]
+  # Directorio de construcción de tu aplicación frontend
+  publish = "build"
+
+[dev]
+  # Configura un proxy para redirigir solicitudes API durante el desarrollo local
+  # Ajusta la URL al backend según sea necesario
+  [[redirects]]
+    from = "/api/*"
+    to = "https://ciendias-api.onrender.com/api/:splat"
+    status = 200
+    force = true
+    headers = { "Access-Control-Allow-Origin" = "*" }
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = true
