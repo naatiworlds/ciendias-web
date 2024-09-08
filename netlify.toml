@@ -1,10 +1,9 @@
 [build]
-  # Directorio de construcción de tu aplicación frontend
+  # Ajusta esto al directorio de construcción correcto
   publish = "dist"
+  command = "npm run build"
 
 [dev]
-  # Configura un proxy para redirigir solicitudes API durante el desarrollo local
-  # Ajusta la URL al backend según sea necesario
   [[redirects]]
     from = "/api/*"
     to = "https://ciendias-api.onrender.com/api/:splat"
