@@ -25,17 +25,17 @@ export default {
     // Al iniciar la aplicación, cargamos los niveles y el progreso guardado.
     try {
       axios.defaults.withCredentials = true;
-      axios.get('http://localhost:8080/api/levels', {
-        withCredentials: true  // Asegura que las cookies de sesión se envíen
+
+      // O usando fetch
+      fetch('https://ciendias-api.onrender.com/api/levels', {
+        method: 'GET',
+        credentials: 'include' // Asegúrate de incluir esto si estás manejando cookies o cabeceras de autenticación
       })
-        .then(response => {
-          this.levels = response.data;
-          console.log(response.data);
-        })
-        .catch(error => {
-          console.error('Error fetching data:', error);
-        });
-      
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error('Error:', error));
+
+
 
       // Cargar progreso guardado desde localStorage
       this.loadSavedProgress();
