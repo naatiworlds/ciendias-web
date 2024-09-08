@@ -26,14 +26,14 @@ export default {
     try {
       axios.defaults.withCredentials = true;
 
-      // O usando fetch
-      fetch('https://ciendias-api.onrender.com/api/levels', {
-        method: 'GET',
-        credentials: 'include' // Asegúrate de incluir esto si estás manejando cookies o cabeceras de autenticación
-      })
-        .then(response => response.json())
-        .then(data => console.log(data))
-        .catch(error => console.error('Error:', error));
+
+      axios.get('https://ciendias-api.onrender.com/api/levels')
+        .then(response => {
+          console.log(response.data);
+        })
+        .catch(error => {
+          console.error(error);
+        });
 
 
 
