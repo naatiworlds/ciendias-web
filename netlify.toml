@@ -1,6 +1,6 @@
 [build]
   # Directorio de construcción de tu aplicación frontend
-  publish = "build"
+  publish = "dist"
 
 [dev]
   # Configura un proxy para redirigir solicitudes API durante el desarrollo local
