@@ -24,7 +24,8 @@ export default {
   async created() {
     // Al iniciar la aplicación, cargamos los niveles y el progreso guardado.
     try {
-      axios.get('https://ciendias-api.onrender.com/api/levels', {
+      axios.defaults.withCredentials = true;
+      axios.get('http://localhost:8080/api/levels', {
         withCredentials: true  // Asegura que las cookies de sesión se envíen
       })
         .then(response => {
