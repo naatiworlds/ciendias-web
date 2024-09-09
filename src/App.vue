@@ -2,8 +2,12 @@
   <div class="app-container">
     <h1>Juego de Niveles</h1>
     <div class="levels">
-      <LevelComponent v-for="level in visibleLevels" :key="level.id" :level="level"
-        @level-completed="handleLevelCompleted" />
+      <LevelComponent 
+        v-for="level in visibleLevels" 
+        :key="level.id" 
+        :level="level" 
+        @level-completed="handleLevelCompleted" 
+      />
     </div>
   </div>
 </template>
@@ -24,16 +28,9 @@ export default {
   async created() {
     // Al iniciar la aplicación, cargamos los niveles y el progreso guardado.
     try {
-      axios.get('https://ciendias-api.onrender.com/api/levels', {
-  withCredentials: true,  // Asegura que las cookies de sesión se envíen
-})
-  .then(response => {
-    this.levels = response.data;
-    console.log(response.data); 
-  })
-  .catch(error => {
-    console.error('Error fetching data:', error);
-  });
+      const response = await axios.get('https://ciendias-api.onrender.com/api/levels');
+      this.levels = response.data;
+
       // Cargar progreso guardado desde localStorage
       this.loadSavedProgress();
     } catch (error) {
@@ -91,23 +88,23 @@ export default {
 </script>
 
 <style>
-body {
-  background-image: url("./assets/background.jpeg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 50% 42%;
-}
+body{
+    background-image: url("./assets/background.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 42%;
+  }
 
-.app-container {
-  text-align: center;
-  padding: 20px;
-  margin: 0 auto;
-}
-
-h1 {
-  text-align: center;
-  box-shadow: 10px 10px 40px black;
-  color: white;
+  .app-container {
+    text-align: center;
+    padding: 20px;
+    margin: 0 auto;
+  }
+  
+  h1 {
+    text-align: center;
+    box-shadow: 10px 10px 40px black;
+    color: white;
   font-family: 'Press Start 2P', cursive;
   font-size: 1.8rem;
   margin-bottom: 20px;
