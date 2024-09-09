@@ -24,7 +24,7 @@ export default {
   async created() {
     // Al iniciar la aplicación, cargamos los niveles y el progreso guardado.
     try {
-      axios.get('https://ciendias-api.onrender.com/api/levels', {
+      axios.get('https://natiwords-api.onrender.com/api/projects', {
         withCredentials: true  // Solo si el backend usa sesiones/cookies
       })
         .then(response => {
