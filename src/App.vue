@@ -25,20 +25,15 @@ export default {
     // Al iniciar la aplicación, cargamos los niveles y el progreso guardado.
     try {
       axios.get('https://ciendias-api.onrender.com/api/levels', {
-        withCredentials: true,  // Asegura que las cookies de sesión se envíen
-        headers: {
-          'Host': 'ciendias-api.onrender.com',
-          'Origin': 'https://cienpaginas.netlify.app'
-        }
-      })
-        .then(response => {
-          this.levels = response.data;
-          console.log(response.data);
-        })
-        .catch(error => {
-          console.error('Error fetching data:', error);
-        });
-
+  withCredentials: true,  // Asegura que las cookies de sesión se envíen
+})
+  .then(response => {
+    this.levels = response.data;
+    console.log(response.data); 
+  })
+  .catch(error => {
+    console.error('Error fetching data:', error);
+  });
       // Cargar progreso guardado desde localStorage
       this.loadSavedProgress();
     } catch (error) {
